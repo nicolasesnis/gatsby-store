@@ -5,7 +5,7 @@ import get from 'lodash/get'
 import { Image, Header } from 'semantic-ui-react'
 import Helmet from 'react-helmet'
 import ProductList from '../components/ProductList'
-import logo from '../images/ill-short-dark.svg'
+import logo from '../images/logo-rectangle.png'
 
 class StoreIndex extends React.Component {
   render() {
