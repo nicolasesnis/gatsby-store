@@ -10,9 +10,16 @@ class AuthProvider extends Component {
         token: localStorage.getItem('customerToken'),
       })
 
+    this.updateVerified = bool =>
+      this.setState({
+        userVerified: bool,
+      })
+
     this.state = {
       token: null,
+      verified: null,
       updateToken: this.updateToken,
+      updateVerified: this.updateVerified,
     }
   }
 
@@ -25,12 +32,14 @@ class AuthProvider extends Component {
   }
 
   render() {
-    const { token, updateToken } = this.state
+    const { token, updateToken, verified, updateVerified } = this.state
     return (
       <AuthContext.Provider
         value={{
+          verified,
           token,
           updateToken,
+          updateVerified,
         }}
       >
         {this.props.children}

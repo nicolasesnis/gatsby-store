@@ -2,8 +2,10 @@ import React from 'react'
 import { navigateTo } from 'gatsby-link'
 import Helmet from 'react-helmet'
 import OrderItemList from '../components/OrderItemList'
+import { Button } from 'semantic-ui-react'
 
 import { getOrders } from '../../lib/moltin'
+import { Redirect } from 'react-router'
 
 export default class MyAccount extends React.Component {
   state = {
@@ -40,10 +42,19 @@ export default class MyAccount extends React.Component {
       })
   }
 
+  handleSignOut = () => {
+    localStorage.clear()
+    location.reload()
+    navigateTo('/')
+  }
+
   render() {
     return (
       <div>
         <Helmet title="My Account" />
+        <Button floated="right" onClick={this.handleSignOut}>
+          Déconnexion
+        </Button>
         <OrderItemList {...this.state} />
       </div>
     )

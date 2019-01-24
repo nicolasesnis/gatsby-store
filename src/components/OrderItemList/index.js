@@ -26,22 +26,34 @@ export default ({ orders, loading }) => {
           id,
           billing_address,
           shipping_address,
-          status,
+          payment,
           meta,
+          shipping,
           order_items,
         } = order
-        const completed = status === 'complete'
+        const paid = payment === 'paid'
+        const shipped = shipping === 'fulfilled'
         const price = meta.display_price.with_tax.formatted
 
         return (
           <Segment.Group key={id}>
             <Segment>
               <Header as="h4">{price}</Header>
+
               <Label
-                icon={completed ? 'check' : null}
-                color={completed ? 'green' : null}
-                content={status.toUpperCase()}
+                icon={paid ? 'check' : null}
+                color={paid ? 'green' : null}
+                content={payment.toUpperCase()}
               />
+
+              {paid ? (
+                <Label
+                  icon={shipped ? 'check' : null}
+                  color={shipped ? 'green' : null}
+                  content={shipping.toUpperCase()}
+                />
+              ) : null}
+
               <pre>{JSON.stringify(order_items, '\t', 2)}</pre>
             </Segment>
             <Segment.Group horizontal>

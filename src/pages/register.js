@@ -113,7 +113,7 @@ export default class Register extends React.Component {
                   />
                 </Form.Field>
 
-                <Button type="submit" color="orange">
+                <Button type="submit" color="black">
                   Register
                 </Button>
               </Segment>

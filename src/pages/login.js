@@ -9,7 +9,7 @@ import {
   Message,
 } from 'semantic-ui-react'
 import Helmet from 'react-helmet'
-import { login } from '../../lib/moltin'
+import { login, getCustomer } from '../../lib/moltin'
 import AuthContext from '../components/Context/AuthContext'
 
 export default class Login extends React.Component {
@@ -36,7 +36,16 @@ export default class Login extends React.Component {
         localStorage.setItem('mcustomer', id)
         context.updateToken()
         navigateTo('/myaccount/')
+        return id
       })
+
+      // Check if user is verified and update context's state
+      .then(id => {
+        getCustomer(id).then(data => {
+          context.updateVerified(data.data.active)
+        })
+      })
+
       .catch(e => {
         console.log(e.message)
         this.setState({
