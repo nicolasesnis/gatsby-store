@@ -4,8 +4,8 @@ const get = require('lodash/get')
 
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
 
   return new Promise((resolve, reject) => {
     const productPageTemplate = path.resolve('src/templates/ProductPage.js')
@@ -43,8 +43,14 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   })
 }
 
-exports.onCreateNode = async ({ node, boundActionCreators, cache, store }) => {
-  const { createNode } = boundActionCreators
+exports.onCreateNode = async ({
+  node,
+  actions,
+  cache,
+  store,
+  createNodeId,
+}) => {
+  const { createNode } = actions
   let fileNode
 
   if (node.internal && node.internal.type === `MoltinProduct`) {
@@ -55,15 +61,22 @@ exports.onCreateNode = async ({ node, boundActionCreators, cache, store }) => {
       store,
       cache,
       createNode,
+      createNodeId,
     })
     if (fileNode && fileNode.id) node.mainImage___NODE = fileNode.id
   }
 }
 
-exports.modifyWebpackConfig = ({ config }) => {
-  config.merge({
-    node: { fs: 'empty' },
-  })
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions
+  if (page.path.match(/^\/app/)) {
+    page.matchPath = '/*'
+    createPage(page)
+  }
+}
 
-  return config
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
+    node: { fs: 'empty', child_process: 'empty' },
+  })
 }

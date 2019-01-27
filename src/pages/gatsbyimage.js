@@ -1,5 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
 const About = ({ data }) => (

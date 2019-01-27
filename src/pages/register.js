@@ -1,5 +1,5 @@
 import React from 'react'
-import { navigateTo } from 'gatsby-link'
+import { navigate } from 'gatsby'
 import {
   Header,
   Form,
@@ -10,6 +10,8 @@ import {
 } from 'semantic-ui-react'
 import Helmet from 'react-helmet'
 import AuthContext from '../components/Context/AuthContext'
+import Layout from '../components/Layout/layout'
+
 import { register } from '../../lib/moltin'
 
 export default class Register extends React.Component {
@@ -35,7 +37,7 @@ export default class Register extends React.Component {
         localStorage.setItem('customerToken', token)
         localStorage.setItem('mcustomer', id)
         context.updateToken()
-        navigateTo('/myaccount/')
+        navigate('/myaccount/')
       })
       .catch(e => {
         console.log(e)
@@ -64,63 +66,65 @@ export default class Register extends React.Component {
     const { loading, errors } = this.state
 
     return (
-      <AuthContext.Consumer>
-        {context => (
-          <React.Fragment>
-            <Helmet title="Register" />
-            <Header as="h1">Create an account</Header>
+      <Layout location={this.props.location}>
+        <AuthContext.Consumer>
+          {context => (
+            <React.Fragment>
+              <Helmet title="Register" />
+              <Header as="h1">Create an account</Header>
 
-            <Form
-              onSubmit={e => this._handleSubmit(e, context)}
-              loading={loading}
-              error={!!errors}
-            >
-              {errors ? this.handleErrors(errors) : null}
-              <Segment>
-                <Form.Field>
-                  <label htmlFor="name">Name</label>
-                  <Input
-                    id="name"
-                    fluid
-                    name="name"
-                    autoFocus
-                    required
-                    onChange={e => this._handleChange(e)}
-                  />
-                </Form.Field>
+              <Form
+                onSubmit={e => this._handleSubmit(e, context)}
+                loading={loading}
+                error={!!errors}
+              >
+                {errors ? this.handleErrors(errors) : null}
+                <Segment>
+                  <Form.Field>
+                    <label htmlFor="name">Name</label>
+                    <Input
+                      id="name"
+                      fluid
+                      name="name"
+                      autoFocus
+                      required
+                      onChange={e => this._handleChange(e)}
+                    />
+                  </Form.Field>
 
-                <Form.Field>
-                  <label htmlFor="email">Email</label>
-                  <Input
-                    id="email"
-                    fluid
-                    name="email"
-                    type="email"
-                    required
-                    onChange={e => this._handleChange(e)}
-                  />
-                </Form.Field>
+                  <Form.Field>
+                    <label htmlFor="email">Email</label>
+                    <Input
+                      id="email"
+                      fluid
+                      name="email"
+                      type="email"
+                      required
+                      onChange={e => this._handleChange(e)}
+                    />
+                  </Form.Field>
 
-                <Form.Field>
-                  <label htmlFor="password">Password</label>
-                  <Input
-                    id="password"
-                    fluid
-                    name="password"
-                    type="password"
-                    required
-                    onChange={e => this._handleChange(e)}
-                  />
-                </Form.Field>
+                  <Form.Field>
+                    <label htmlFor="password">Password</label>
+                    <Input
+                      id="password"
+                      fluid
+                      name="password"
+                      type="password"
+                      required
+                      onChange={e => this._handleChange(e)}
+                    />
+                  </Form.Field>
 
-                <Button type="submit" color="black">
-                  Register
-                </Button>
-              </Segment>
-            </Form>
-          </React.Fragment>
-        )}
-      </AuthContext.Consumer>
+                  <Button type="submit" color="black">
+                    Register
+                  </Button>
+                </Segment>
+              </Form>
+            </React.Fragment>
+          )}
+        </AuthContext.Consumer>
+      </Layout>
     )
   }
 }

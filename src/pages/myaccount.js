@@ -1,11 +1,13 @@
 import React from 'react'
-import { navigateTo } from 'gatsby-link'
+import { navigate } from 'gatsby'
 import Helmet from 'react-helmet'
-import OrderItemList from '../components/OrderItemList'
 import { Button } from 'semantic-ui-react'
 
-import { getOrders } from '../../lib/moltin'
 import { Redirect } from 'react-router'
+import OrderItemList from '../components/OrderItemList'
+import Layout from '../components/Layout/layout'
+
+import {getOrders} from '../../lib/moltin'
 
 export default class MyAccount extends React.Component {
   state = {
@@ -17,7 +19,7 @@ export default class MyAccount extends React.Component {
     const token = localStorage.getItem('customerToken')
 
     if (!token) {
-      navigateTo('/login/')
+      navigate('/login/')
     }
     getOrders(token)
       .then(({ data, included, meta }) => {
@@ -45,18 +47,18 @@ export default class MyAccount extends React.Component {
   handleSignOut = () => {
     localStorage.clear()
     location.reload()
-    navigateTo('/')
+    navigate('/')
   }
 
   render() {
     return (
-      <div>
+      <Layout location={this.props.location}>
         <Helmet title="My Account" />
         <Button floated="right" onClick={this.handleSignOut}>
           Déconnexion
         </Button>
         <OrderItemList {...this.state} />
-      </div>
+      </Layout>
     )
   }
 }

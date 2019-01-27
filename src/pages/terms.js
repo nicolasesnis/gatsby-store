@@ -1,8 +1,9 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import Layout from '../components/Layout/layout'
 
-const Terms = () => (
-  <div>
+const Terms = props => (
+  <Layout location={props.location}>
     <Helmet title="Terms" />
     <h1>Terms</h1>
     <p>
@@ -17,7 +18,7 @@ const Terms = () => (
       gangsta ac, eleifend vitae, shizzlin dizzle. Mammasay mammasa mamma oo sa
       suscipizzle. Shizzle my nizzle crocodizzle semper velit sed purizzle.
     </p>
-  </div>
+  </Layout>
 )
 
 export default Terms

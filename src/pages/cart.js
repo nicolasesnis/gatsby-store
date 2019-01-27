@@ -4,8 +4,10 @@ import CartItemList from '../components/CartItemList/'
 import CartSummary from '../components/CartSummary/'
 import CartContext from '../components/Context/CartContext'
 import { consolidateStreamedStyles } from 'styled-components'
+import Layout from '../components/Layout/layout'
 
-const Moltin = require('../../lib/moltin')
+import { getCartItems, getCustomer, checkoutCart, payForOrder, removeFromCart } from '../../lib/moltin'
+
 
 export default class Cart extends React.Component {
   state = {
@@ -20,7 +22,7 @@ export default class Cart extends React.Component {
 
   componentDidMount() {
     const cartId = localStorage.getItem('mcart')
-    Moltin.getCartItems(cartId)
+    getCartItems(cartId)
       .then(({ data, meta }) => {
         this.setState({
           items: data,
@@ -30,7 +32,7 @@ export default class Cart extends React.Component {
         })
       })
       .catch(err => console.error(err))
-    Moltin.getCustomer(localStorage.getItem('mcustomer'))
+    getCustomer(localStorage.getItem('mcustomer'))
       .then(data => {
         this.setState({
           customer: {
@@ -68,9 +70,11 @@ export default class Cart extends React.Component {
       country: args.shipping_address_country,
     }
 
-    Moltin.checkoutCart(cartId, customerId, billing, shipping)
+
+
+    checkoutCart(cartId, customerId, billing, shipping)
       .then(({ data: { id } }) => {
-        Moltin.payForOrder(id, token, customer.email)
+        payForOrder(id, token, customer.email)
           .then(() => {
             this.setState({
               completed: true,
@@ -87,7 +91,7 @@ export default class Cart extends React.Component {
 
   _handleRemoveFromCart = (itemId, context) => {
     const { cartId } = this.state
-    Moltin.removeFromCart(itemId, cartId).then(({ data, meta }) => {
+    removeFromCart(itemId, cartId).then(({ data, meta }) => {
       const total = data.reduce((a, c) => a + c.quantity, 0)
       context.updateCartCount(total, cartId)
       this.setState({
@@ -99,9 +103,9 @@ export default class Cart extends React.Component {
 
   _handleDestroyCart = context => {
     const { cartId } = this.state
-    Moltin.getCartItems(cartId).then(data => {
+    getCartItems(cartId).then(data => {
       data.data.forEach(item => {
-        Moltin.removeFromCart(item.id, cartId).then(({ data, meta }) => {
+        removeFromCart(item.id, cartId).then(({ data, meta }) => {
           const total = data.reduce((a, c) => a + c.quantity, 0)
           context.updateCartCount(total, cartId)
           this.setState({
@@ -118,7 +122,7 @@ export default class Cart extends React.Component {
     const { loading } = rest
 
     return (
-      <div>
+      <Layout location={this.props.location}>
         <Helmet title="Cart" />
         <CartContext.Consumer>
           {context => (
@@ -136,7 +140,7 @@ export default class Cart extends React.Component {
             handleCheckout={this._handleCheckout}
           />
         ) : null}
-      </div>
+      </Layout>
     )
   }
 }

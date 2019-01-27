@@ -8,11 +8,8 @@ const fromPairs = pairs =>
     return cache
   }, {})
 
-exports.sourceNodes = async (
-  { boundActionCreators, createNodeId },
-  configOptions
-) => {
-  const { createNode } = boundActionCreators
+exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
+  const { createNode } = actions
 
   delete configOptions.plugins
 

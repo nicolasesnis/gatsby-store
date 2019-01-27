@@ -1,5 +1,5 @@
 import React from 'react'
-import { navigateTo } from 'gatsby-link'
+import { navigate } from 'gatsby'
 import {
   Header,
   Form,
@@ -9,8 +9,10 @@ import {
   Message,
 } from 'semantic-ui-react'
 import Helmet from 'react-helmet'
-import { login, getCustomer } from '../../lib/moltin'
 import AuthContext from '../components/Context/AuthContext'
+import Layout from '../components/Layout/layout'
+
+import { login, getCustomer } from '../../lib/moltin'
 
 export default class Login extends React.Component {
   state = {
@@ -35,7 +37,7 @@ export default class Login extends React.Component {
         localStorage.setItem('customerToken', token)
         localStorage.setItem('mcustomer', id)
         context.updateToken()
-        navigateTo('/myaccount/')
+        navigate('/myaccount/')
         return id
       })
 
@@ -47,7 +49,7 @@ export default class Login extends React.Component {
       })
 
       .catch(e => {
-        console.log(e.message)
+        console.log(e)
         this.setState({
           loading: false,
           errors: e.errors || e,
@@ -77,52 +79,54 @@ export default class Login extends React.Component {
     const { loading, errors } = this.state
 
     return (
-      <AuthContext.Consumer>
-        {context => (
-          <React.Fragment>
-            <Helmet title="Login" />
-            <Header as="h1">Log in to your account</Header>
+      <Layout location={this.props.location}>
+        <AuthContext.Consumer>
+          {context => (
+            <React.Fragment>
+              <Helmet title="Login" />
+              <Header as="h1">Log in to your account</Header>
 
-            <Form
-              onSubmit={e => this._handleSubmit(e, context)}
-              loading={loading}
-              error={!!errors}
-            >
-              {errors ? this.handleErrors(errors) : null}
-              <Segment>
-                <Form.Field>
-                  <label htmlFor="email">Email</label>
-                  <Input
-                    id="email"
-                    fluid
-                    name="email"
-                    type="email"
-                    autoFocus
-                    onChange={e => this._handleChange(e)}
-                    required
-                  />
-                </Form.Field>
+              <Form
+                onSubmit={e => this._handleSubmit(e, context)}
+                loading={loading}
+                error={!!errors}
+              >
+                {errors ? this.handleErrors(errors) : null}
+                <Segment>
+                  <Form.Field>
+                    <label htmlFor="email">Email</label>
+                    <Input
+                      id="email"
+                      fluid
+                      name="email"
+                      type="email"
+                      autoFocus
+                      onChange={e => this._handleChange(e)}
+                      required
+                    />
+                  </Form.Field>
 
-                <Form.Field>
-                  <label htmlFor="password">Password</label>
-                  <Input
-                    id="password"
-                    fluid
-                    name="password"
-                    type="password"
-                    required
-                    onChange={e => this._handleChange(e)}
-                  />
-                </Form.Field>
+                  <Form.Field>
+                    <label htmlFor="password">Password</label>
+                    <Input
+                      id="password"
+                      fluid
+                      name="password"
+                      type="password"
+                      required
+                      onChange={e => this._handleChange(e)}
+                    />
+                  </Form.Field>
 
-                <Button type="submit" color="orange">
-                  Login
-                </Button>
-              </Segment>
-            </Form>
-          </React.Fragment>
-        )}
-      </AuthContext.Consumer>
+                  <Button type="submit" color="orange">
+                    Login
+                  </Button>
+                </Segment>
+              </Form>
+            </React.Fragment>
+          )}
+        </AuthContext.Consumer>
+      </Layout>
     )
   }
 }
