@@ -6,3 +6,5 @@ public
 .cache/
 yarn.lock
 localStorage/
+.env.development
+.env.production
