@@ -1,0 +1,122 @@
+{
+  "assetsByChunkName": {
+    "component---src-pages-privacy-js": [
+      "component---src-pages-privacy-js-34c75336e39e96023c33.js",
+      "component---src-pages-privacy-js-34c75336e39e96023c33.js.map"
+    ],
+    "component---src-pages-cart-js": [
+      "component---src-pages-cart-js-a8221424b40e1a2153f5.js",
+      "component---src-pages-cart-js-a8221424b40e1a2153f5.js.map"
+    ],
+    "path---myaccount": [
+      "path---myaccount-a0e39f21c11f6a62c5ab.js",
+      "path---myaccount-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-pages-index-js": [
+      "component---src-pages-index-js-e6cdbc756e95c28af1d2.js",
+      "component---src-pages-index-js-e6cdbc756e95c28af1d2.js.map"
+    ],
+    "path---": [
+      "path----557518bd178906f8d58a.js",
+      "path----557518bd178906f8d58a.js.map"
+    ],
+    "path---terms": [
+      "path---terms-a0e39f21c11f6a62c5ab.js",
+      "path---terms-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-pages-myaccount-js": [
+      "component---src-pages-myaccount-js-2f08cd442b557773dc90.js",
+      "component---src-pages-myaccount-js-2f08cd442b557773dc90.js.map"
+    ],
+    "component---node-modules-gatsby-plugin-offline-app-shell-js": [
+      "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
+      "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
+    ],
+    "component---src-layouts-index-js": [
+      "component---src-layouts-index-js-b99128d830179d8d4f3a.js",
+      "component---src-layouts-index-js-b99128d830179d8d4f3a.js.map"
+    ],
+    "path---gatsbyimage": [
+      "path---gatsbyimage-84b9ee08828feb79b2c6.js",
+      "path---gatsbyimage-84b9ee08828feb79b2c6.js.map"
+    ],
+    "path---index": [
+      "path---index-8a694c0e1d181bdaa070.js",
+      "path---index-8a694c0e1d181bdaa070.js.map"
+    ],
+    "component---src-pages-404-js": [
+      "component---src-pages-404-js-4503918ea3a16cfcdb75.js",
+      "component---src-pages-404-js-4503918ea3a16cfcdb75.js.map"
+    ],
+    "path---privacy": [
+      "path---privacy-a0e39f21c11f6a62c5ab.js",
+      "path---privacy-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "commons": [
+      "commons-b70704f2f42a0b75b080.js",
+      "commons-b70704f2f42a0b75b080.js.map"
+    ],
+    "path---404-html": [
+      "path---404-html-a0e39f21c11f6a62c5ab.js",
+      "path---404-html-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---product-tiphaine": [
+      "path---product-tiphaine-9b1bf145941353105e46.js",
+      "path---product-tiphaine-9b1bf145941353105e46.js.map"
+    ],
+    "path---login": [
+      "path---login-a0e39f21c11f6a62c5ab.js",
+      "path---login-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---offline-plugin-app-shell-fallback": [
+      "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
+      "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-pages-register-js": [
+      "component---src-pages-register-js-b4efbbe06fde893b3c5f.js",
+      "component---src-pages-register-js-b4efbbe06fde893b3c5f.js.map"
+    ],
+    "path---product-marie-jeanne": [
+      "path---product-marie-jeanne-775905f16dbb0e19e93d.js",
+      "path---product-marie-jeanne-775905f16dbb0e19e93d.js.map"
+    ],
+    "component---src-pages-login-js": [
+      "component---src-pages-login-js-61e5bafbc753e441e6d3.js",
+      "component---src-pages-login-js-61e5bafbc753e441e6d3.js.map"
+    ],
+    "app": [
+      "app-0e96a38875704d3b6811.js",
+      "build-js-styles.css",
+      "app-0e96a38875704d3b6811.js.map",
+      "build-js-styles.css.map"
+    ],
+    "component---src-pages-gatsbyimage-js": [
+      "component---src-pages-gatsbyimage-js-e31be27e094252a3343b.js",
+      "component---src-pages-gatsbyimage-js-e31be27e094252a3343b.js.map"
+    ],
+    "path---product-paulette": [
+      "path---product-paulette-e5ad2a22ad140b8c200d.js",
+      "path---product-paulette-e5ad2a22ad140b8c200d.js.map"
+    ],
+    "path---cart": [
+      "path---cart-a0e39f21c11f6a62c5ab.js",
+      "path---cart-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-templates-product-page-js": [
+      "component---src-templates-product-page-js-8ed985946c8e7e1269a3.js",
+      "component---src-templates-product-page-js-8ed985946c8e7e1269a3.js.map"
+    ],
+    "path---404": [
+      "path---404-a0e39f21c11f6a62c5ab.js",
+      "path---404-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-pages-terms-js": [
+      "component---src-pages-terms-js-e5ec338134abad7e9c78.js",
+      "component---src-pages-terms-js-e5ec338134abad7e9c78.js.map"
+    ],
+    "path---register": [
+      "path---register-a0e39f21c11f6a62c5ab.js",
+      "path---register-a0e39f21c11f6a62c5ab.js.map"
+    ]
+  }
+}
