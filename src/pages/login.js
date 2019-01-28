@@ -1,5 +1,5 @@
 import React from 'react'
-import { navigate } from 'gatsby'
+import { navigate, Link } from 'gatsby'
 import {
   Header,
   Form,
@@ -116,6 +116,9 @@ export default class Login extends React.Component {
                       required
                       onChange={e => this._handleChange(e)}
                     />
+                  </Form.Field>
+                  <Form.Field>
+                    <Link to="/forgotpassword">Mot de passe oublié ?</Link>
                   </Form.Field>
 
                   <Button type="submit" color="orange">

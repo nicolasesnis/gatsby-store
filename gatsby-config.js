@@ -4,19 +4,18 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby starter ecommerce',
-    author: 'Parminder Sanghera',
-    description: 'A starter e-commerce site made using Gatsby.',
-    siteUrl: 'https://parmsang.github.io/gatsby-starter-ecommerce/',
+    title: 'Zazou Paris',
+    author: 'Nicolas Esnis',
+    description:
+      'Boutique en ligne Zazou-Paris de bijoux personnalisés faits à la main',
+    siteUrl: 'https://www.zazou-paris.com',
   },
   pathPrefix: '/gatsby-starter-ecommerce',
   plugins: [
     {
       resolve: 'gatsby-source-moltin',
       options: {
-        key:
-          process.env.MOLTIN_CLIENT_ID ||
-          'xdIRZLJFUU3T8LYrlFfhcm0QOlgn3UhPhy2swxrD79',
+        key: process.env.MOLTIN_CLIENT_ID,
         products: ['main_image', 'brands', 'files', 'categories'],
       },
     },
@@ -77,5 +76,12 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+
+    {
+      resolve: 'gatsby-plugin-express',
+      options: {
+        output: 'config/gatsby-express.json',
+      },
+    },
   ],
 }

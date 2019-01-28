@@ -15,10 +15,11 @@ export default ({ children, location }) => (
       <Helmet
         meta={[
           {
-            name: 'description',
-            content: 'A starter eCommerce website made using GatsbyJS',
+            name: 'Zazou Paris',
+            content:
+              'Boutique en ligne Zazou-Paris de bijoux personnalisés faits à la main',
           },
-          { name: 'keywords', content: 'ecommerce, gatsby, moltin' },
+          { name: 'keywords', content: 'bijoux, zazou, mode' },
           { name: 'msapplication-TileColor', content: '#da532c' },
           { name: 'theme-color', content: '#ffffff' },
         ]}
