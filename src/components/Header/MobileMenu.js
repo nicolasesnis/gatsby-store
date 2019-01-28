@@ -102,7 +102,7 @@ class MobileMenu extends Component {
             active={activeItem === withPrefix('/')}
           >
             <Logo />
-            Store
+            Zazou
           </Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item
@@ -136,16 +136,16 @@ class MobileMenu extends Component {
                   X
                 </CloseButton>
                 <StyledLink to="/" onClick={this.handleClose}>
-                  Home
+                  Boutique
                 </StyledLink>
                 <StyledDivider />
                 <StyledLink to="/cart/" onClick={this.handleClose}>
-                  {`Shopping Cart ${cartCount ? `(${cartCount})` : ''}`}
+                  {`Panier ${cartCount ? `(${cartCount})` : ''}`}
                 </StyledLink>
                 <StyledDivider />
                 {token ? (
                   <StyledLink to="/myaccount/" onClick={this.handleClose}>
-                    My Account
+                    Mon compte
                   </StyledLink>
                 ) : (
                   [
@@ -154,11 +154,11 @@ class MobileMenu extends Component {
                       onClick={this.handleClose}
                       key={1}
                     >
-                      Sign Up
+                      S'inscrire
                     </StyledLink>,
                     <StyledDivider key={2} />,
                     <StyledLink to="/login/" onClick={this.handleClose} key={3}>
-                      Sign In
+                      Se connecter
                     </StyledLink>,
                   ]
                 )}

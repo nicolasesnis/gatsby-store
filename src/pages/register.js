@@ -71,7 +71,7 @@ export default class Register extends React.Component {
           {context => (
             <React.Fragment>
               <Helmet title="Register" />
-              <Header as="h1">Create an account</Header>
+              <Header as="h1">Créer un compte</Header>
 
               <Form
                 onSubmit={e => this._handleSubmit(e, context)}
@@ -81,7 +81,7 @@ export default class Register extends React.Component {
                 {errors ? this.handleErrors(errors) : null}
                 <Segment>
                   <Form.Field>
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Nom</label>
                     <Input
                       id="name"
                       fluid
@@ -93,7 +93,7 @@ export default class Register extends React.Component {
                   </Form.Field>
 
                   <Form.Field>
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Adresse Email</label>
                     <Input
                       id="email"
                       fluid
@@ -105,7 +105,7 @@ export default class Register extends React.Component {
                   </Form.Field>
 
                   <Form.Field>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Mot de passe</label>
                     <Input
                       id="password"
                       fluid
@@ -117,7 +117,7 @@ export default class Register extends React.Component {
                   </Form.Field>
 
                   <Button type="submit" color="black">
-                    Register
+                    S'enregistrer
                   </Button>
                 </Segment>
               </Form>

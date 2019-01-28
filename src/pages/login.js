@@ -84,7 +84,7 @@ export default class Login extends React.Component {
           {context => (
             <React.Fragment>
               <Helmet title="Login" />
-              <Header as="h1">Log in to your account</Header>
+              <Header as="h1">Connectez-vous à votre espace</Header>
 
               <Form
                 onSubmit={e => this._handleSubmit(e, context)}
@@ -94,7 +94,7 @@ export default class Login extends React.Component {
                 {errors ? this.handleErrors(errors) : null}
                 <Segment>
                   <Form.Field>
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Adresse Email</label>
                     <Input
                       id="email"
                       fluid
@@ -107,7 +107,7 @@ export default class Login extends React.Component {
                   </Form.Field>
 
                   <Form.Field>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Mot de passe</label>
                     <Input
                       id="password"
                       fluid
@@ -122,7 +122,7 @@ export default class Login extends React.Component {
                   </Form.Field>
 
                   <Button type="submit" color="orange">
-                    Login
+                    Connexion
                   </Button>
                 </Segment>
               </Form>

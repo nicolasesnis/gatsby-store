@@ -33,7 +33,7 @@ export default ({
         triggerEvent="onClick"
       >
         <Button color="black" floated="right">
-          Check out
+          Commander
         </Button>
       </StripeCheckout>
     </Segment>

@@ -7,8 +7,8 @@ const About = ({ data }) => (
   <div>
     <Helmet title="Gatsby Image" />
     <h3>Images displayed here utilise the Gatsby-Image plugin</h3>
-    <Img sizes={data.background.sizes} alt="Big Lamp" />
-    <Img
+    {/* <Img sizes={data.background.sizes} alt="Big Lamp" /> */}
+    {/* <Img
       style={{
         position: 'absolute',
         left: 0,
@@ -20,7 +20,7 @@ const About = ({ data }) => (
       }}
       sizes={data.background.sizes}
       alt="Big Lamp"
-    />
+    /> */}
   </div>
 )
 

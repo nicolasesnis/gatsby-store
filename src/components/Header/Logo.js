@@ -1,12 +1,12 @@
 import React from 'react'
 import { Image } from 'semantic-ui-react'
 
-import moltin from '../../images/moltin-light-hex.svg.svg'
+import zazou from '../../images/logo-carre-2.png'
 
 const Logo = () => (
   <Image
     size="mini"
-    src={moltin}
+    src={zazou}
     style={{ marginRight: '1.5em' }}
     alt="I love Lamp"
   />

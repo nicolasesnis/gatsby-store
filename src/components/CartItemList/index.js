@@ -10,8 +10,10 @@ export default ({ items, removeFromCart, destroyCart, loading, completed }) => {
     return (
       <Message success>
         {destroyCart()}
-        <Message.Header>Your placed!</Message.Header>
-        <p>Congratulations. Your order and payment has been accepted.</p>
+        <Message.Header>C'est bon !</Message.Header>
+        <p>
+          Merci ! Votre commande a été placée et votre paiement a été accepté..
+        </p>
       </Message>
     )
   }
@@ -19,10 +21,8 @@ export default ({ items, removeFromCart, destroyCart, loading, completed }) => {
   if (items.length === 0)
     return (
       <Message warning>
-        <Message.Header>Your cart is empty</Message.Header>
-        <p>
-          You'll need to add some items to the cart before you can checkout.
-        </p>
+        <Message.Header>Votre panier est vide</Message.Header>
+        <p>Allez faire quelques emplettes puis revenez !</p>
       </Message>
     )
   const mapCartItemsToItems = items =>

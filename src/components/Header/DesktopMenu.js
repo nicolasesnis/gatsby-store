@@ -33,7 +33,7 @@ class DesktopMenu extends Component {
             header
           >
             <Logo />
-            Starter Store
+            Zazou !
           </Menu.Item>
           {token ? (
             <Menu.Menu position="right">
@@ -43,7 +43,7 @@ class DesktopMenu extends Component {
                 active={activeItem === withPrefix('/myaccount/')}
               >
                 <Icon name="user" />
-                My Account
+                Mon compte
               </Menu.Item>
               <Menu.Item
                 as={Link}
@@ -60,21 +60,21 @@ class DesktopMenu extends Component {
                 to="/register/"
                 active={activeItem === withPrefix('/register/')}
               >
-                Sign up
+                S'inscrire
               </Menu.Item>
               <Menu.Item
                 as={Link}
                 to="/login/"
                 active={activeItem === withPrefix('/login/')}
               >
-                Sign in
+                Se connecter
               </Menu.Item>
               <Menu.Item
                 as={Link}
                 to="/cart/"
                 active={activeItem === withPrefix('/cart/')}
               >
-                <ShoppingCartIcon cartCount={cartCount} name="Cart" />
+                <ShoppingCartIcon cartCount={cartCount} name="Panier" />
               </Menu.Item>
             </Menu.Menu>
           )}
