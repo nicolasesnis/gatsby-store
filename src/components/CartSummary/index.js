@@ -16,7 +16,7 @@ export default ({
       <StripeCheckout
         // Required :
         stripeKey={
-          process.env.STRIPE_PUBLISHABLE_KEY ||
+          process.env.GATSYB_STRIPE_PUBLISHABLE_KEY ||
           'pk_test_UGpNjQHqWU5PtsHFl14UsDeI'
         }
         token={handleCheckout}
