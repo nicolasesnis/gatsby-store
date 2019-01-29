@@ -15,7 +15,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-moltin',
       options: {
-        key: process.env.MOLTIN_CLIENT_ID,
+        key: process.env.GATSBY_MOLTIN_CLIENT_ID,
         products: ['main_image', 'brands', 'files', 'categories'],
       },
     },

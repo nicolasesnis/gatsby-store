@@ -58,6 +58,8 @@ export default props => (
     render={data => (
       <div>
         <Layout location={props.location}>
+          {console.log(process.env)}
+          {console.log(process.env.GATSBY_MOLTIN_CLIENT_ID)}
           <Helmet title={data.site.siteMetadata.title} />
           <Header
             as="h3"
