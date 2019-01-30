@@ -3,14 +3,14 @@ import Link from 'gatsby-link'
 import { Header, Loader, Message, Label, Segment } from 'semantic-ui-react'
 import Moment from "react-moment"
 import OrderItemList from "../OrderItemList"
-import { getOrderItems } from '../../../lib/moltin'
 
 export default ({ orders, loading }) => {
   if (loading) return <Loader active inline="centered" />
 
   if (orders.length === 0) {
     return (
-      <Message warning>
+
+      <Message warning compact>
         <Message.Header>Vous n'avez encore effectué aucune commande</Message.Header>
         <p>
           Quand vous réaliserez des achats, ils apparaîtront ici.
@@ -18,6 +18,7 @@ export default ({ orders, loading }) => {
           <Link to="/">Accès Boutique</Link>
         </p>
       </Message>
+
     )
   }
 
@@ -45,18 +46,19 @@ export default ({ orders, loading }) => {
               <Header as="h4">Référence de la commande : {id}</Header>
               <Header as="h4">Total : {price}</Header>
               <Header as="h4">Acheté le : <Moment format="DD/MM/YYYY">{meta.timestamps.created_at}</Moment></Header>
+              <Header as="h4">Livraison prévue avant le : <Moment add={{days: 10}} format="DD/MM/YYYY">{meta.timestamps.created_at}</Moment></Header>
 
               <Label
                 icon={paid ? 'check' : null}
                 color={paid ? 'green' : null}
-                content={payment.toUpperCase()}
+                content={paid ? "PAYÉ" : "NON PAYÉ"}
               />
 
               {paid ? (
                 <Label
                   icon={shipped ? 'check' : null}
                   color={shipped ? 'green' : null}
-                  content={shipping.toUpperCase()}
+                  content={shipped ? "LIVRÉ" : "EN COURS DE LIVRAISON"}
                 />
               ) : null}
 
@@ -84,7 +86,7 @@ export default ({ orders, loading }) => {
                 </p>
               </Segment>
               <Segment>
-                <Header as="h4">Adresse de livraison ::</Header>
+                <Header as="h4">Adresse de livraison :</Header>
                 <p>
                   {shipping_address.line_1}
                   <br />
