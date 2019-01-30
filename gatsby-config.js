@@ -38,7 +38,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-133452669-1`,
       },
     },
     {
@@ -48,6 +48,9 @@ module.exports = {
         color: `tomato`,
         // Disable the loading spinner.
         showSpinner: false,
+        anonymize: true,
+        respectDNT: true,
+
       },
     },
     'gatsby-plugin-styled-components',
