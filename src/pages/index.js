@@ -58,7 +58,6 @@ export default props => (
     render={data => (
       <div>
         <Layout location={props.location}>
-
           <Helmet title={data.site.siteMetadata.title} />
           <Header
             as="h3"

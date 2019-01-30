@@ -15,7 +15,7 @@ export default ({ children, location }) => (
       <Helmet
         meta={[
           {
-            name: 'Zazou Paris',
+            name: 'description',
             content:
               'Boutique en ligne Zazou-Paris de bijoux personnalisés faits à la main',
           },
