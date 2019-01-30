@@ -51,7 +51,6 @@ export default class MyAccount extends React.Component {
     navigate('/')
   }
 
-
   render() {
     return (
       <Layout location={this.props.location}>
