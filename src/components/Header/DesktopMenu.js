@@ -50,7 +50,7 @@ class DesktopMenu extends Component {
                 to="/cart/"
                 active={activeItem === withPrefix('/cart/')}
               >
-                <ShoppingCartIcon cartCount={cartCount} name="Cart" />
+                <ShoppingCartIcon cartCount={cartCount} name="Panier" />
               </Menu.Item>
             </Menu.Menu>
           ) : (

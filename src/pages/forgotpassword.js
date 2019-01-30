@@ -76,7 +76,7 @@ class ForgotPassword extends Component {
                   // style={inputStyle}
                   id="email"
                   fluid
-                  autofocus
+                  autoFocus
                   label="Email"
                   required
                   value={email}

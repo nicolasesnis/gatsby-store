@@ -1,13 +1,14 @@
 import React from 'react'
-import { navigate } from 'gatsby'
+
 import Helmet from 'react-helmet'
 import { Button } from 'semantic-ui-react'
 
-import { Redirect } from 'react-router'
-import OrderItemList from '../components/OrderItemList'
+import { navigate } from 'gatsby'
+
+import OrderList from '../components/OrderList'
 import Layout from '../components/Layout/layout'
 
-import {getOrders} from '../../lib/moltin'
+import { getOrders } from '../../lib/moltin'
 
 export default class MyAccount extends React.Component {
   state = {
@@ -57,7 +58,7 @@ export default class MyAccount extends React.Component {
         <Button floated="right" onClick={this.handleSignOut}>
           Déconnexion
         </Button>
-        <OrderItemList {...this.state} />
+        <OrderList {...this.state} />
       </Layout>
     )
   }

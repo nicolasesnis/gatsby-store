@@ -1,98 +1,88 @@
 import React from 'react'
-import Link from 'gatsby-link'
-import { Header, Loader, Message, Label, Segment } from 'semantic-ui-react'
+import { Card, Loader } from 'semantic-ui-react'
+import { graphql, StaticQuery, Link } from 'gatsby'
+import { getOrderItems } from '../../../lib/moltin'
 
-export default ({ orders, loading }) => {
-  if (loading) return <Loader active inline="centered" />
-
-  if (orders.length === 0) {
-    return (
-      <Message warning>
-        <Message.Header>No recent orders</Message.Header>
-        <p>
-          When you place an order, they will appear here.{' '}
-          <Link to="/">Go shopping</Link>.
-        </p>
-      </Message>
-    )
+class OrderItemList extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      orderItems: '',
+      loading: true,
+    }
   }
 
-  return (
-    <div>
-      <Header as="h1">My previous orders</Header>
+  componentDidMount() {
+    getOrderItems(this.props.orderId).then(result => {
+      this.setState({
+        orderItems: result.data,
+        loading: false,
+      })
+    })
+  }
 
-      {orders.map(order => {
-        const {
-          id,
-          billing_address,
-          shipping_address,
-          payment,
-          meta,
-          shipping,
-          order_items,
-        } = order
-        const paid = payment === 'paid'
-        const shipped = shipping === 'fulfilled'
-        const price = meta.display_price.with_tax.formatted
+  render() {
+    if (this.state.loading) return <Loader active inline="centered" />
 
-        return (
-          <Segment.Group key={id}>
-            <Segment>
-              <Header as="h4">{price}</Header>
+    return (
+      <StaticQuery
+        query={graphql`
+          query AccountQuery {
+            allMoltinProduct {
+              edges {
+                node {
+                  originalId
+                  includedData {
+                    main_image {
+                      id
+                      link {
+                        href
+                      }
+                    }
+                  }
+                  mainImage {
+                    childImageSharp {
+                      sizes(maxWidth: 600) {
+                        ...GatsbyImageSharpSizes
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `}
+        render={data => {
+          const orderItems = Object.values(this.state.orderItems)
+          const items = []
+          orderItems.map((order, index) => {
+            items[index] = {
+              key: order.id,
+              header: <Link to={`/product/${order.name}/`}>{order.name}</Link>,
+              description: <div>
+                Prix : {order.unit_price.amount/100} €
+                <br/>
+                Nb : {order.quantity}
+                </div>
+            }
+            for (let i = 0; i < data.allMoltinProduct.edges.length; i++) {
+              if (
+                data.allMoltinProduct.edges[i].node.originalId ===
+                order.product_id
+              ) {
+                items[index].image =
+                  data.allMoltinProduct.edges[
+                    i
+                  ].node.includedData.main_image.link.href
+              }
+            }
+          })
 
-              <Label
-                icon={paid ? 'check' : null}
-                color={paid ? 'green' : null}
-                content={payment.toUpperCase()}
-              />
-
-              {paid ? (
-                <Label
-                  icon={shipped ? 'check' : null}
-                  color={shipped ? 'green' : null}
-                  content={shipping.toUpperCase()}
-                />
-              ) : null}
-
-              <pre>{JSON.stringify(order_items, '\t', 2)}</pre>
-            </Segment>
-            <Segment.Group horizontal>
-              <Segment>
-                <Header as="h4">Billing address:</Header>
-                <p>
-                  {billing_address.line_1}
-                  <br />
-                  {billing_address.line_2}
-                  <br />
-                  {billing_address.city}
-                  <br />
-                  {billing_address.postcode}
-                  <br />
-                  {billing_address.county}
-                  <br />
-                  {billing_address.country}
-                </p>
-              </Segment>
-              <Segment>
-                <Header as="h4">Shipping address:</Header>
-                <p>
-                  {shipping_address.line_1}
-                  <br />
-                  {shipping_address.line_2}
-                  <br />
-                  {shipping_address.city}
-                  <br />
-                  {shipping_address.postcode}
-                  <br />
-                  {shipping_address.county}
-                  <br />
-                  {shipping_address.country}
-                </p>
-              </Segment>
-            </Segment.Group>
-          </Segment.Group>
-        )
-      })}
-    </div>
-  )
+          return <Card.Group items={items} itemsPerRow={4} />
+        }}
+      />
+    )
+  }
 }
+
+export default OrderItemList

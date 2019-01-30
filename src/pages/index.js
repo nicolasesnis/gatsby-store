@@ -58,7 +58,6 @@ export default props => (
     render={data => (
       <div>
         <Layout location={props.location}>
-          {console.log(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)}
 
           <Helmet title={data.site.siteMetadata.title} />
           <Header

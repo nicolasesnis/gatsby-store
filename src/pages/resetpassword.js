@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'gatsby'
-import { updateCustomer, findCustomerByResetToken } from '../../lib/moltin'
+import {
 
-const loading = {
-  margin: '1em',
-  fontSize: '24px',
-}
+  Form,
+  Input,
+  Button,
+  Segment,
+  Message,
+} from 'semantic-ui-react'
+import { updateCustomer, findCustomerByResetToken } from '../../lib/moltin'
+import Layout from '../components/Layout/layout'
 
 export default class ResetPassword extends Component {
   constructor() {
@@ -79,80 +83,59 @@ export default class ResetPassword extends Component {
 
     if (error) {
       return (
-        <div>
-          {/* <HeaderBar title={title} /> */}
-          <div style={loading}>
-            <h4>Problem resetting password. Please send another reset link.</h4>
-            <Link
-              // buttonText={`Go Home`}
-              // buttonStyle={homeButton}
-              to="/"
-            >
-              Go Home
-            </Link>
-            <Link
-              // buttonStyle={forgotButton}
-              // buttonText={'Forgot Password?'}
-              to="/forgotpassword"
-            >
-              Forgot Password ?
-            </Link>
-          </div>
-        </div>
+        <Layout location={this.props.location}>
+
+          <Message error>
+          Il y a eu un problème lors de la réinitialisation de votre mot de
+              passe. Veuillez <Link to="/forgotpassword">réessayer à nouveau</Link>.
+            </Message>
+
+
+
+            <Link to="/">Retour Boutique</Link>
+
+        </Layout>
       )
     }
     if (isLoading) {
       return (
-        <div>
-          {/* <HeaderBar title={title} /> */}
-          <div style={loading}>Loading User Data...</div>
-        </div>
+        <Layout location={this.props.location}>
+          <div>Veuillez patienter</div>
+        </Layout>
       )
     }
     return (
-      <div>
-        {/* <HeaderBar title={title} /> */}
-        <form className="password-form" onSubmit={this.updatePassword}>
-          <input
-            // style={inputStyle}
-            id="password"
-            label="password"
-            onChange={this.handleChange('password')}
-            value={password}
-            type="password"
-          />
-          <button
-            type="submit"
-            // buttonStyle={updateButton}
-            // buttonText={'Update Password'}
-          >
-            Update Password
-          </button>
-        </form>
+      <Layout location={this.props.location}>
+        <Segment>
+          <Form onSubmit={this.updatePassword}>
+            <Form.Field>
+              <Input
+                id="password"
+                label="Nouveau mot de passe"
+                autoFocus
+                required
+                onChange={this.handleChange('password')}
+                value={password}
+                type="password"
+              />
+            </Form.Field>
+            <Button color="orange" type="submit">
+              Mettre à jour
+            </Button>
+          </Form>
+        </Segment>
 
         {updated && (
           <div>
-            <p>
-              Your password has been successfully reset, please try logging in
-              again.
-            </p>
-            <Link
-              // buttonStyle={loginButton}
-              // buttonText={'Login'}
-              to="/login"
-            >
-              Login
-            </Link>
+            <Message success>
+              Votre mot de passe a été modifié avec succès !  <Link to="/login">Connectez-vous</Link> à
+              nouveau pour accéder à vos informations.
+            </Message>
+
           </div>
         )}
-        <Link
-          // buttonText={`Go Home`}
-          // buttonStyle={homeButton}
-          to="/"
-        >
-          Go Home
-        </Link>
-      </div>
+        <Link to="/">Retour Boutique</Link>
+      </Layout>
     )
   }
 }
