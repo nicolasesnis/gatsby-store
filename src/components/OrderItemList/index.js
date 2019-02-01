@@ -1,6 +1,7 @@
 import React from 'react'
-import { Card, Loader } from 'semantic-ui-react'
+import { Card, Loader, Image } from 'semantic-ui-react'
 import { graphql, StaticQuery, Link } from 'gatsby'
+import Img from 'gatsby-image'
 import { getOrderItems } from '../../../lib/moltin'
 
 class OrderItemList extends React.Component {
@@ -57,8 +58,10 @@ class OrderItemList extends React.Component {
           const items = []
           orderItems.map((order, index) => {
             items[index] = {
-              key: order.id,
-              header: <Link to={`/product/${order.name}/`}>{order.name}</Link>,
+              childKey: order.id,
+              as: Link,
+              to: `/product/${order.name}/`,
+              header: order.name,
               description: <div>
                 Prix : {order.unit_price.amount/100} €
                 <br/>
@@ -69,12 +72,19 @@ class OrderItemList extends React.Component {
               if (
                 data.allMoltinProduct.edges[i].node.originalId ===
                 order.product_id
-              ) {
-                items[index].image =
-                  data.allMoltinProduct.edges[
+              )
+              {
+                items[index].image = <Image>
+                <Img
+                  sizes={data.allMoltinProduct.edges[
                     i
-                  ].node.includedData.main_image.link.href
-              }
+                  ].node.mainImage.childImageSharp.sizes}
+
+                  alt={name}
+
+                />
+              </Image>
+                }
             }
           })
 

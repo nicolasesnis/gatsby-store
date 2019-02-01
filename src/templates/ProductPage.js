@@ -22,6 +22,7 @@ class ProductPageTemplate extends React.PureComponent {
       header: data.name,
       meta: data.meta,
       sku: data.sku,
+      relationships: data.relationships,
     }
 
     if (!sizes) return null
@@ -52,6 +53,13 @@ export const pageQuery = graphql`
                 amount
                 currency
                 formatted
+              }
+            }
+          }
+          relationships {
+            files {
+              data {
+                id
               }
             }
           }

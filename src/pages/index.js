@@ -65,7 +65,7 @@ export default props => (
             textAlign="center"
             style={{ marginBottom: '2em' }}
           >
-            <Header.Content style={{ width: '60%', margin: '0 auto' }}>
+            <Header.Content style={{ width: '80%', margin: '0 auto' }}>
               <Image src={logo} alt={'logo'} />
             </Header.Content>
           </Header>
