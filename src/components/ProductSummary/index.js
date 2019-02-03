@@ -15,6 +15,7 @@ class ProductSummary extends React.Component {
 
   componentDidMount() {
     const array = []
+    if (this.props.relationships.files) {
     Object.values(this.props.relationships.files.data).forEach(file => {
       getFiles(file.id).then(data => {
         array.push(data)
@@ -23,6 +24,7 @@ class ProductSummary extends React.Component {
         })
       })
     })
+  }
   }
 
   render() {
