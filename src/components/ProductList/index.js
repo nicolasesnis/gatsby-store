@@ -32,6 +32,7 @@ const mapProductsToItems = products =>
               alt={name}
               style={{
                 background: `${background_colour || '#fafafa'}`,
+                background: '#fafafa',
               }}
             />
           </Image>
