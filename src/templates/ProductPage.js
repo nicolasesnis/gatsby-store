@@ -8,6 +8,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout/layout'
 
 class ProductPageTemplate extends React.PureComponent {
+
   render() {
     const productInfo = get(this, 'props.data.allMoltinProduct')
     const data = productInfo.edges[0].node
