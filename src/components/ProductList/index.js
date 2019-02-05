@@ -9,6 +9,7 @@ const mapProductsToItems = products =>
       node: {
         name,
         originalId,
+        category,
         meta,
         mainImage,
         background_colour,
@@ -16,6 +17,7 @@ const mapProductsToItems = products =>
       },
     }) => {
       const price = meta.display_price.with_tax.formatted || null
+
       return {
         as: Link,
         to: `/product/${name}/`,
@@ -23,7 +25,7 @@ const mapProductsToItems = products =>
         image: (
           <Image>
             {isNew ? (
-              <Label color="red" ribbon style={{ zIndex: '1' }}>
+              <Label color="blue" ribbon style={{ zIndex: '1' }}>
                 New!
               </Label>
             ) : null}
@@ -36,7 +38,14 @@ const mapProductsToItems = products =>
             />
           </Image>
         ),
-        header: name,
+        header: (
+          <Card.Header>
+            <div>{name}</div>
+            <div style={{ float: 'right' }}>
+              <Label>{category}</Label>
+            </div>
+          </Card.Header>
+        ),
         meta: <Card.Meta style={{ color: 'dimgray' }}>{price}</Card.Meta>,
       }
     }

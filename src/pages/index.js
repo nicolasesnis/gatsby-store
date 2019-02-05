@@ -26,6 +26,7 @@ export default props => (
               description
               background_colour
               new
+              category
               meta {
                 display_price {
                   with_tax {

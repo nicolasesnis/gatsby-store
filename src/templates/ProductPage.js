@@ -8,7 +8,6 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout/layout'
 
 class ProductPageTemplate extends React.PureComponent {
-
   render() {
     const productInfo = get(this, 'props.data.allMoltinProduct')
     const data = productInfo.edges[0].node
@@ -22,6 +21,7 @@ class ProductPageTemplate extends React.PureComponent {
       mainImage: data.mainImage,
       header: data.name,
       meta: data.meta,
+      category: data.category.name,
       sku: data.sku,
       relationships: data.relationships,
     }
@@ -81,6 +81,7 @@ export const pageQuery = graphql`
           slug
           material
           size
+          category
           new
           sku
         }
