@@ -12,13 +12,12 @@ export default ({
   <div>
     <Divider />
     <Segment clearing size="large">
-      <strong>Sub total:</strong> {formatted}
+      <strong>Sub total:</strong>
+{' '}
+{formatted}
       <StripeCheckout
         // Required :
-        stripeKey={
-          process.env.GATSYB_STRIPE_PUBLISHABLE_KEY ||
-          'pk_test_UGpNjQHqWU5PtsHFl14UsDeI'
-        }
+        stripeKey={process.env.GATSBY_STRIPE_PUBLISHABLE_KEY}
         token={handleCheckout}
         // optional :
         image="https://via.placeholder.com/128"
